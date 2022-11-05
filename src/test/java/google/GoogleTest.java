@@ -46,6 +46,6 @@ public class GoogleTest {
 
     @After
     public void fecharBrowser(){
-        //driver.quit();
+        driver.quit();
     }
 }
