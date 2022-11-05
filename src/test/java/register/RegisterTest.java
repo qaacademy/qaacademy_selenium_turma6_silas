@@ -90,5 +90,17 @@ public class RegisterTest {
         driver.findElement(By.xpath("/html/body/section/div/div/div/input")).sendKeys("QA Academy");
         driver.switchTo().defaultContent();
     }
+    @Test
+    public void windowTes(){
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get("https://demo.automationtesting.in/Windows.html");
+        driver.findElement(By.xpath("//*[@id=\"Tabbed\"]/a/button")).click();
+        Object[] janelas =  driver.getWindowHandles().toArray();
+        driver.switchTo().window(janelas[1].toString());
+       String url =  driver.getCurrentUrl();
+       Assert.assertEquals("https://www.selenium.dev/",url);
+    }
 
 }
