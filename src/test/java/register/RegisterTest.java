@@ -1,6 +1,8 @@
 package register;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -12,13 +14,30 @@ import java.time.Duration;
 
 public class RegisterTest {
     WebDriver driver;
+
+    @Before
+    public void abrirBrowser(){
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+        driver.get("https://demo.automationtesting.in/Register.html");
+    }
     @Test
     public void testRegister(){
-         driver = new ChromeDriver();
-         driver.manage().window().maximize();
-         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-         driver.get("https://demo.automationtesting.in/Register.html");
-
+         RegisterPage registerPage = new RegisterPage(driver);
+         registerPage.preencherNome("Silas");
+         registerPage.preencherSobreNome("Leao");
+         registerPage.preencherEndereco("Rua mario");
+         registerPage.preencherEmail("silas.teste@sda.com.br");
+         registerPage.preencherPhone("1178941236");
+         registerPage.clicarGender();
+         registerPage.clicarHobbies();
+         registerPage.selecionarSkills("Java");
+         registerPage.clicarCountry();
+         registerPage.selecionarAno("1996");
+         registerPage.selecionarMes("April");
+         registerPage.selecionarDia("4");
     }
 
     @Test
@@ -81,6 +100,10 @@ public class RegisterTest {
         driver.switchTo().window(janelas[1].toString());
        String url =  driver.getCurrentUrl();
        Assert.assertEquals("https://www.selenium.dev/",url);
+    }
+    @After
+    public void fecharBrowser(){
+        driver.quit();
     }
 
 }

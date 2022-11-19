@@ -3,9 +3,12 @@ import java.util.HashMap;
 
 public class ExemplosJava3 {
     public static void main(String[] args) {
-       // criandoArray();
+       Caneta caneta = new Caneta("Azul");
+       caneta.mostrarCor();
+
+        // criandoArray();
         //criandoHashMap();
-        tratandoExcecao();
+        //tratandoExcecao();
     }
     public static void criandoArray(){
 //        String [] nomes = new String[10];
