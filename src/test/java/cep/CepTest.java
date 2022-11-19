@@ -14,10 +14,10 @@ import java.time.Duration;
 public class CepTest {
     WebDriver driver;
     @Before
-    public void abrirBroser(){
+    public void abrirBrowser() throws InterruptedException {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.get("https://buscacepinter.correios.com.br/app/endereco/index.php");
     }
     @Test
