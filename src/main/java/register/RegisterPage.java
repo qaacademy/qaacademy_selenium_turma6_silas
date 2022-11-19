@@ -64,9 +64,9 @@ public class RegisterPage {
          driver.findElement(By.xpath(selectCountry2)).click();
      }
 
-     public void selecionarAno(String year){
+     public void selecionarAno(String years){
          Select ano = new Select(driver.findElement(By.id(year)));
-         ano.selectByVisibleText(year);
+         ano.selectByVisibleText(years);
      }
 
     public void selecionarMes(String meses){
